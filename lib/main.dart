@@ -1,5 +1,6 @@
 import 'package:equb/widgets/duePayments/duePayments.dart';
 import 'package:equb/widgets/introduction/introduction.dart';
+import 'package:equb/widgets/money/money.dart';
 import 'package:equb/widgets/pieChart/pieChart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,11 @@ class _equbAppState extends State<equbApp> {
 
                 //  endregion
 
+                //region Money
+                widgetMoney(),
+                //endregion
 
+                
 
 
 
