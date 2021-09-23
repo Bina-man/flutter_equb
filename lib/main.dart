@@ -58,7 +58,7 @@ class _equbAppState extends State<equbApp> {
                 widgetMoney(),
                 //endregion
 
-                
+
 
 
 
