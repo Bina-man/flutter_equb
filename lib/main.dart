@@ -1,3 +1,4 @@
+import 'package:equb/widgets/introduction/introduction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,12 @@ class _equbAppState extends State<equbApp> {
                 //region Profile
                 widgetProfile(),
                 //endregion
+
+                //region Intoduction
+                widgetIntroduction(),
+                //endregion
+
+
 
 
               ],
