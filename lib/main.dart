@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets/profile/profile.dart';
+
 void main() {
   runApp(equbApp());
 }
@@ -31,6 +33,11 @@ class _equbAppState extends State<equbApp> {
             padding: const EdgeInsets.only(right: 10.0, left: 10.0),
             child: ListView(
               children: [
+                //region Profile
+                widgetProfile(),
+                //endregion
+
+
               ],
             ),
           ),
