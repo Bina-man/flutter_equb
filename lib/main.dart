@@ -1,3 +1,4 @@
+import 'package:equb/widgets/collectedPayments/collectedPayments.dart';
 import 'package:equb/widgets/duePayments/duePayments.dart';
 import 'package:equb/widgets/introduction/introduction.dart';
 import 'package:equb/widgets/money/money.dart';
@@ -57,6 +58,11 @@ class _equbAppState extends State<equbApp> {
                 //region Money
                 widgetMoney(),
                 //endregion
+
+                //  region Collected payment
+                widgetCollectedPayments()
+
+                //  endregion
 
 
 
