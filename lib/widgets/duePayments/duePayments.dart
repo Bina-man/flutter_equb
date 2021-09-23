@@ -1,6 +1,7 @@
 import 'package:equb/webServices/webservices.dart';
 import 'package:equb/widgets/duePayments/model.dart';
 import 'package:flutter/material.dart';
+// ignore: camel_case_types
 class widgetPayment extends StatefulWidget {
   // const widgetPayment({required Key key}) : super(key: key);
 
@@ -8,6 +9,7 @@ class widgetPayment extends StatefulWidget {
   _widgetPaymentState createState() => _widgetPaymentState();
 }
 
+// ignore: camel_case_types
 class _widgetPaymentState extends State<widgetPayment> {
   List<Payment> payments = [];
   @override

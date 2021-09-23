@@ -12,6 +12,7 @@ void main() {
   runApp(equbApp());
 }
 
+// ignore: camel_case_types
 class equbApp extends StatefulWidget {
   // const equbApp({Key key}) : super(key: key);
 
@@ -19,6 +20,7 @@ class equbApp extends StatefulWidget {
   _equbAppState createState() => _equbAppState();
 }
 
+// ignore: camel_case_types
 class _equbAppState extends State<equbApp> {
 
 
@@ -63,12 +65,6 @@ class _equbAppState extends State<equbApp> {
                 widgetCollectedPayments()
 
                 //  endregion
-
-
-
-
-
-
               ],
             ),
           ),
