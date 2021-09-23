@@ -1,4 +1,5 @@
 import 'package:equb/widgets/introduction/introduction.dart';
+import 'package:equb/widgets/pieChart/pieChart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -41,6 +42,11 @@ class _equbAppState extends State<equbApp> {
                 //region Intoduction
                 widgetIntroduction(),
                 //endregion
+
+                //region wheel
+                widgetPiechart(),
+                //   endregion
+
 
 
 
