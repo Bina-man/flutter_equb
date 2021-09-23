@@ -1,9 +1,11 @@
 import 'package:equb/webServices/webservices.dart';
 import 'package:equb/widgets/collectedPayments/model.dart';
 import 'package:flutter/material.dart';
+
 class widgetCollectedPayments extends StatefulWidget {
   @override
-  _widgetCollectedPaymentsState createState() => _widgetCollectedPaymentsState();
+  _widgetCollectedPaymentsState createState() =>
+      _widgetCollectedPaymentsState();
 }
 
 class _widgetCollectedPaymentsState extends State<widgetCollectedPayments> {
@@ -14,6 +16,9 @@ class _widgetCollectedPaymentsState extends State<widgetCollectedPayments> {
     super.initState();
     getCollectedPayments();
   }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +29,7 @@ class _widgetCollectedPaymentsState extends State<widgetCollectedPayments> {
         child: GridView.builder(
           itemCount: collectedPayment.length,
           itemBuilder: (context, i) {
-            return collectedPayments(collectedPayment[i].frequency);
+            return collectedPayments(collectedPayment[i].frequency, collectedPayment[i].title);
           },
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -33,7 +38,9 @@ class _widgetCollectedPaymentsState extends State<widgetCollectedPayments> {
       ),
     );
   }
-  Widget collectedPayments(int freq) {
+
+  Widget collectedPayments(int freq, String title) {
+    bool saved = false;
     String frequency = "";
     if (freq % 2 == 0) {
       frequency = "monthly";
@@ -48,59 +55,123 @@ class _widgetCollectedPaymentsState extends State<widgetCollectedPayments> {
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black12, width: 2),
             borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            ListTile(
-              title: Text("Salary"),
-              leading: Icon(
-                Icons.monetization_on,
-                size: 40,
-              ),
-              subtitle: Row(
-                children: [
-                  Icon(
-                    // Icons.access_time_filled_rounded,
-                    Icons.access_time_outlined,
-                    color: Colors.black26,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ListTile(
+                  title: Text(
+                    "Salary",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
-                  Text("$frequency"),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.settings_backup_restore_outlined),
-                Text("7 Earnings")
+                  leading: Icon(
+                    Icons.monetization_on,
+                    size: 40,
+                    color: Colors.green,
+                  ),
+                  subtitle: Row(
+                    children: [
+                      Icon(
+                        // Icons.access_time_filled_rounded,
+                        Icons.access_time_outlined,
+                        color: Colors.black26,
+                      ),
+                      Text("$frequency"),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.settings_backup_restore_outlined,
+                        color: Colors.black54,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Text(
+                          "7 Earnings",
+                          style: TextStyle(color: Colors.black26),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.monetization_on_rounded,
+                        color: Colors.black54,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Text(
+                          "ETB 2,000",
+                          style: TextStyle(color: Colors.black26),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.people,
+                        color: Colors.black54,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5.0),
+                        child: Text(
+                          "26 Members",
+                          style: TextStyle(color: Colors.black26),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.monetization_on_rounded),
-                Text("ETB 2,000")
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.people),
-                Text("26 Members"),
-              ],
-            ),
+            Positioned(
+                bottom: 2,
+                right: 2,
+                child: IconButton(
+                  onPressed: (){
+                    setState(() {
+                      saved = !saved;
+                    });
+                    final snackBar = SnackBar(
+                      content: Text("Bookmarked $title payment"),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  icon: saved? Icon(Icons.bookmark_sharp):Icon(Icons.bookmark_outline_outlined),
+                ))
           ],
         ),
       ),
     );
   }
+
+
   getCollectedPayments() async {
     HttpServices.getCollectedPayments().then((value) {
       setState(() {
         collectedPayment = value;
       });
     });
-
   }
 }
