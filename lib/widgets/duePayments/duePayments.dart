@@ -39,7 +39,7 @@ class _widgetPaymentState extends State<widgetPayment> {
             itemBuilder: (context, i) {
               return typePayments(
                   payments[i].name,
-                  12.0,
+                  payments[i].owedAmount,
                   payments[i]
                       .dueDate
                       .difference(payments[i].createdAt));
@@ -49,7 +49,7 @@ class _widgetPaymentState extends State<widgetPayment> {
       ],
     );
   }
-  Widget typePayments(String name, double money,Duration daysleft) {
+  Widget typePayments(String name, String money,Duration daysleft) {
     var subDate = daysleft.toString().substring(0, 2);
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -114,8 +114,10 @@ class _widgetPaymentState extends State<widgetPayment> {
                     borderRadius: BorderRadius.all(Radius.circular(50))),
                 child: TextButton(
                     onPressed: () {
-                      getPayments();
-                      print("Hello");
+                      final snackBar = SnackBar(
+                        content: Text("Paid $money ETB to $name"),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
                     child: Text(
                       "Pay",
