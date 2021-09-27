@@ -1,3 +1,5 @@
+// Wellcome to Equb Challenge ...
+
 import 'package:equb/widgets/collectedPayments/collectedPayments.dart';
 import 'package:equb/widgets/duePayments/duePayments.dart';
 import 'package:equb/widgets/introduction/introduction.dart';
