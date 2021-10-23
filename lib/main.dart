@@ -38,7 +38,6 @@ class _equbAppState extends State<equbApp> {
             padding: const EdgeInsets.only(right: 10.0, left: 10.0),
             child: ListView(
               children: [
-                //region Profile
                 widgetProfile(),
                 //endregion
 
