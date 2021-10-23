@@ -24,13 +24,9 @@ class equbApp extends StatefulWidget {
 
 // ignore: camel_case_types
 class _equbAppState extends State<equbApp> {
-
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
   }
 
   @override
@@ -74,11 +70,4 @@ class _equbAppState extends State<equbApp> {
       ),
     );
   }
-
 }
-
-
-
-
-
-
